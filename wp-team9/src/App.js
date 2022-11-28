@@ -13,10 +13,9 @@ function App() {
  
   return(
     <Routes>
-      <Route path="/" element={<Search />} />
+      <Route path="/" element={<Login />} />
       <Route path="/subway" element={<Subway />} />
       <Route path="/main" element={<Main />} />
-      <Route path="/login" element={<Login />} />
       <Route path="/mypage/:id/:pw" element={<MyPage />} />
       <Route path="/category/:what" element={<Category />} />
       <Route path="/category" element={<CategoryMain />} />

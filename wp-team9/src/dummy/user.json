@@ -3,9 +3,9 @@
     {
       "id" : "user1",
       "pw" : "1234",
-      "like" : ["홍추곱창카페", "호호식당 대학로", "달콤한위로", "오이지 대학로"],
-      "recent" : [],
-      "profile" : "/image/user.png"
+      "profile" : "/image/user.png",
+      "birth" : "2001.01.16",
+      "tel" : "010-0000-0000"
     },
     {
       "id" : "user2",

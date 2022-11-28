@@ -9,31 +9,13 @@ const MyPage = () => {
     
     const path = useLocation().pathname;
     const index = path.split('/');
-    console.log("ID : " + index[2]);
-    console.log("PW : " + index[3]);
-
-    const error = ["Error"];
     
     const id = index[2];
     const pw = index[3];
-    var like = null;
+    
     var img = null;
-    var r = null;
-    var recent = null;
-
-    const likes = userList.user.map((u) => {
-        if(u.id === id && u.pw === pw)
-            return like = u.like
-        // 오류
-    })
-
-    
-    const recents = userList.user.map((u) => {
-        if(u.id === id && u.pw === pw)
-            return recent = JSON.stringify(u.recent);
-        // 오류
-    })
-    
+    var day = null;
+    var phone = null;
 
     const profile = userList.user.find((u) => {
         if(u.id === id && u.pw === pw)
@@ -41,34 +23,39 @@ const MyPage = () => {
         // 오류
     })
 
-    const addRecent = () => {
-        
-    }
+    const birth = userList.user.find((u) => {
+        if(u.id === id && u.pw === pw)
+            return day=u.birth;
+        // 오류
+    })
 
-    console.log("Like : " + like);
-    console.log("프로필 : " + img);
-    console.log("recent : " + recent);
+    const likes = userList.user.find((u) => {
+        if(u.id === id)
+            return phone = u.tel;
+        // 오류
+    })
 
     return(
         <>
         <Header />
         <div class="entire">
-            <h3 style={{ textAlign: "center", marginBottom:"30px", fontSize:"50px"}}>마이페이지</h3>
-            <div class="group1">
-                <div class="img"><img src={process.env.PUBLIC_URL+img} style={{width : "100px", height:"100px"}}></img><span style={{paddingTop:"10px", fontSize:"30px", marginLeft:"20px"}}>{id}</span></div>
-            </div>
-            <p style={{marginLeft:"15px", fontWeight:"bold", textAlign:"center", fontSize:"20px", fontWeight:"bold"}}>최근 본 식당 List</p>
-            <div class="likeRes">
-                
-                <div style={{display:"inline-block", boxSizing: "border-box", margin:"10px"}}><SimpleInfo1 id = {id} restaurant={like[0]}></SimpleInfo1></div>
-                <div style={{display:"inline-block", boxSizing: "border-box", margin:"10px"}}><SimpleInfo1 id = {id} restaurant={like[1]}></SimpleInfo1></div>
-                <div style={{display:"inline-block", boxSizing: "border-box", margin:"10px"}}><SimpleInfo1 id = {id} restaurant={like[2]}></SimpleInfo1></div>
-                <div style={{display:"inline-block", boxSizing: "border-box", margin:"10px"}}><SimpleInfo1 id = {id} restaurant={like[3]}></SimpleInfo1></div>
-            </div>
-            <div class="bottom">
-                <Link to={"/"}>
-                    <button class="back">뒤로가기</button>
-                </Link>
+            <h3 style={{ textAlign: "center", paddingTop:"10px", marginBottom:"50px", fontSize:"50px"}}>마이페이지</h3>
+            <div class="userInfo">
+                <div>
+                <img src={process.env.PUBLIC_URL+img} style={{width : "100px", height:"100px"}}></img>
+                </div>
+                <div class="group">
+                <p class="userInfos">ID</p>
+                <p>{id}</p>
+                </div>
+                <div class="group">
+                <p class="userInfos">BIRTH</p>
+                <span>{day}</span>
+                </div>
+                <div class="group">
+                <p class="userInfos">TELL</p>
+                <span>{phone}</span>
+                </div>
             </div>
         </div>
         </>
