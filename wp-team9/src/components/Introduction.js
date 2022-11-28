@@ -1,14 +1,13 @@
 
 import React from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import restaurant from '../dummy/restaurant.json';
 import userList from '../dummy/user.json';
 import axios from 'axios';
 import "../css/Introduction.css";
 import SimpleMenu from './SimpleMenu';
 import Header from './Header';
-import SimpleInfo2 from './SimpleInfo2';
-import CategoryHeader from './CategoryHeader';
+import Time from './Time';
 
 const Introduction = () => {
     var path = useLocation().pathname;
@@ -59,6 +58,14 @@ const Introduction = () => {
         breakTime = () => {
             axios.get(about);
         }
+
+        if(about.breakTime.start == null){
+            breakTime.start = "없음"
+        }
+        
+        if(about.breakTime.end == null){
+            breakTime.end = "없음"
+        }
         
         if(about.dayOff == null){
             dayOff = "연중무휴";
@@ -66,35 +73,58 @@ const Introduction = () => {
         else
             dayOff = about.dayOff;
         tel = about.tel;
+
         lastOrder = () => {
             axios.get(about);
         }
+
+        if(about.lastOrder.점심 == null){
+            lastOrder.점심 = "없음"
+        }
+        
+        if(about.lastOrder.저녁 == null){
+            lastOrder.저녁 = "없음"
+        }
     } 
+
+    /*
+<div>
+                <p class="aboutIntro">TIME</p>
+                <div class="aboutContents"><p style={{margin:"0 auto"}}>OPEN</p><p>{openTime}</p></div>
+                <div class="aboutContents"><p>CLOSE</p><p>{closeTime}</p></div>
+                <div class="aboutContents"><p>BREAK</p><p>{breakTime.start + " ~ " + breakTime.end}</p></div>
+                <div class="aboutContents"><p>Last Order</p><p>{lastOrder.점심}</p></div>
+                <div class="aboutContents"><p>Last Order</p><p>{lastOrder.저녁}</p></div>                
+                </div>
+    */
 
     return (
         <>
         <Header />
         <div class="entire">
-        <CategoryHeader />
             <h3 style={{fontWeight:"bold", fontSize:"30px", textAlign:"center"}}>{name}</h3>
             <div style={{border: "5px solid skyBlue", padding : "20px", margin:"30px", borderRadius:"30px", textAlign:"center"}}>
-                <p><img src={process.env.PUBLIC_URL+"/image/map.png"} style={{marginRight:"10px"}}></img>  {address}</p>
-                <p style={{fontWeight:"bold", fontSize:"30px", textAlign:"center", backgroundColor:"yellow", width:"80px", margin:"0 auto", marginBottom:"10px", borderRadius:"20px"}}>MENU</p>
+                <p  style={{fontSize:"20px"}}><img src={process.env.PUBLIC_URL+"/image/map.png"} style={{marginRight:"10px"}}></img>  {address}</p>
+                <p class="aboutIntro">MENU</p>
                 <div class="border" style={{display: "inline-block"}}>
-                <div style={{display:"inline-block", boxSizing: "border-box", margin:"15px"}}> <SimpleMenu name={about.menu.name[0]} price={about.menu.price[0]} img={about.menu.img[0]}></SimpleMenu></div>
-                <div style={{display:"inline-block", boxSizing: "border-box", margin:"15px"}}> <SimpleMenu name={about.menu.name[1]} price={about.menu.price[1]} img={about.menu.img[1]}></SimpleMenu></div>
-                <div style={{display:"inline-block", boxSizing: "border-box", margin:"15px"}}> <SimpleMenu name={about.menu.name[2]} price={about.menu.price[2]} img={about.menu.img[2]}></SimpleMenu></div>
-                <div style={{display:"inline-block", boxSizing: "border-box", margin:"15px"}}> <SimpleMenu name={about.menu.name[3]} price={about.menu.price[3]} img={about.menu.img[3]}></SimpleMenu></div>
+                <div class="aboutContents"> <SimpleMenu name={about.menu.name[0]} price={about.menu.price[0]} img={about.menu.img[0]}></SimpleMenu></div>
+                <div class="aboutContents" > <SimpleMenu name={about.menu.name[1]} price={about.menu.price[1]} img={about.menu.img[1]}></SimpleMenu></div>
+                <div class="aboutContents"> <SimpleMenu name={about.menu.name[2]} price={about.menu.price[2]} img={about.menu.img[2]}></SimpleMenu></div>
+                <div class="aboutContents"> <SimpleMenu name={about.menu.name[3]} price={about.menu.price[3]} img={about.menu.img[3]}></SimpleMenu></div>
                 </div>
                 
-                <div style={{display:"inline-block", boxSizing: "border-box", margin:"15px"}}><p style={{margin:"0 auto"}}>OPEN</p><p>{openTime}</p></div>
-                <div style={{display:"inline-block", boxSizing: "border-box", margin:"15px"}}><p>CLOSE</p><p>{closeTime}</p></div>
-                <div style={{display:"inline-block", boxSizing: "border-box", margin:"15px"}}><p>BREAK</p><p>{about.breakTime.start + " ~ " + about.breakTime.end}</p></div>
-
                 
-                <div style={{display:"inline-block", boxSizing: "border-box", margin:"15px"}}><p>Last Order</p><p>{about.lastOrder.점심}</p></div>
-                <div style={{display:"inline-block", boxSizing: "border-box", margin:"15px"}}><p>Last Order</p><p>{about.lastOrder.저녁}</p></div>                
-
+                <div class="clockBack">
+                    <p class="aboutIntro" style={{marginTop:"15px"}}>TIME</p>
+                    <Time about="OPEN" time={openTime} ></Time>
+                    <Time about="BREAK" time={breakTime.start + " ~ " + breakTime.end} ></Time>
+                    <Time about="CLOSE" time={closeTime} ></Time>
+                </div>                    
+                <div>
+                    <Time about="LAST ORDER - LAUNCH" time={lastOrder.점심} ></Time>
+                    <Time about="LAST ORDER - DINNER" time={lastOrder.저녁} ></Time>
+                </div>
+                
                
                 <p>휴무일 {dayOff}</p>
                 <p>Tel {tel}</p>

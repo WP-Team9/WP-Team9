@@ -24,6 +24,13 @@ const Header = () => {
       </Link>
       </div>
       <div style={{display:"inline-block", textAlign:"center"}}>
+      <Link to={"/search"} style={{textDecoration : "none"}}>
+      <p class="pbar">
+        맛집 검색
+      </p>
+      </Link>
+      </div>
+      <div style={{display:"inline-block", textAlign:"center"}}>
       <Link to={"/mypage/user1/1234"} style={{textDecoration : "none"}}>
       <p class="pbar">
         마이페이지

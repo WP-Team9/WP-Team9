@@ -8,6 +8,8 @@
 .subway-top {
     /* position: fixed; */
     padding: 200px 150px 50px 150px;
+    
+    margin: 0 auto;
     margin-left: 70px;
 }
 

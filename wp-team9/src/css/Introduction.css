@@ -20,10 +20,28 @@
     border-radius: 20px;
 }
 
-p{
-    padding: 10px;
+.aboutIntro{
     font-weight: bold;
+    font-size: 30px;
+    text-align:center;
+    background-color:yellow;
+    width:80px;
+    margin:0 auto;
+    margin-bottom:10px;
+    border-radius:20px;
 }
+
+.aboutContents{
+    display:inline-block;
+    box-sizing: border-box;
+    margin:15px
+}
+
+.clockBack{
+    margin: 0 auto;
+    margin-top: 15px;
+}
+
 
 img{
     width: 100px;
