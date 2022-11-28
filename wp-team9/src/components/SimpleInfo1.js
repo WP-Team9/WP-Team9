@@ -33,7 +33,7 @@ const SimpleInfo1 = ( props ) => {
                 return new Promise((resolve, reject) =>{
                     let result;
                     try{
-                        u.recent += name;
+                        u.recent = ([...u.recent], name);
                     }catch(err){
                         reject(err);
                     }

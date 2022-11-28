@@ -30,7 +30,7 @@ const MyPage = () => {
     
     const recents = userList.user.map((u) => {
         if(u.id === id && u.pw === pw)
-            return recent = JSON.stringify(u.recents);
+            return recent = JSON.stringify(u.recent);
         // 오류
     })
     
@@ -56,10 +56,9 @@ const MyPage = () => {
             <h3 style={{ textAlign: "center", marginBottom:"30px", fontSize:"50px"}}>마이페이지</h3>
             <div class="group1">
                 <div class="img"><img src={process.env.PUBLIC_URL+img} style={{width : "100px", height:"100px"}}></img><span style={{paddingTop:"10px", fontSize:"30px", marginLeft:"20px"}}>{id}</span></div>
-            
             </div>
-            <p style={{marginLeft:"15px", fontWeight:"bold", textAlign:"center", fontSize:"20px", fontWeight:"bold"}}>좋아요한 식당 List</p>
-            <div class="likeRes" style={{}}>
+            <p style={{marginLeft:"15px", fontWeight:"bold", textAlign:"center", fontSize:"20px", fontWeight:"bold"}}>최근 본 식당 List</p>
+            <div class="likeRes">
                 
                 <div style={{display:"inline-block", boxSizing: "border-box", margin:"10px"}}><SimpleInfo1 id = {id} restaurant={like[0]}></SimpleInfo1></div>
                 <div style={{display:"inline-block", boxSizing: "border-box", margin:"10px"}}><SimpleInfo1 id = {id} restaurant={like[1]}></SimpleInfo1></div>

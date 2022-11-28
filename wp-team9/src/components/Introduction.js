@@ -62,9 +62,15 @@ const Introduction = () => {
         if(about.breakTime.start == null){
             breakTime.start = "없음"
         }
+        else{
+            breakTime.start = about.breakTime.start;
+        }
         
         if(about.breakTime.end == null){
             breakTime.end = "없음"
+        }
+        else{
+            breakTime.end = about.breakTime.end;
         }
         
         if(about.dayOff == null){
@@ -81,22 +87,17 @@ const Introduction = () => {
         if(about.lastOrder.점심 == null){
             lastOrder.점심 = "없음"
         }
+        else{
+            lastOrder.점심 = about.lastOrder.점심;
+        }
         
         if(about.lastOrder.저녁 == null){
             lastOrder.저녁 = "없음"
         }
+        else{
+            lastOrder.저녁 = about.lastOrder.저녁;
+        }
     } 
-
-    /*
-<div>
-                <p class="aboutIntro">TIME</p>
-                <div class="aboutContents"><p style={{margin:"0 auto"}}>OPEN</p><p>{openTime}</p></div>
-                <div class="aboutContents"><p>CLOSE</p><p>{closeTime}</p></div>
-                <div class="aboutContents"><p>BREAK</p><p>{breakTime.start + " ~ " + breakTime.end}</p></div>
-                <div class="aboutContents"><p>Last Order</p><p>{lastOrder.점심}</p></div>
-                <div class="aboutContents"><p>Last Order</p><p>{lastOrder.저녁}</p></div>                
-                </div>
-    */
 
     return (
         <>

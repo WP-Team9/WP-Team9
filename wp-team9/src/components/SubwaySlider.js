@@ -11,10 +11,6 @@ import data from '../dummy/restaurant.json';
 
  
 const SubwaySlider = ({props}) => {
-    // const [ sidebar, setSidebar ] = useState(false);
-    // const toggleSidebar = () => setSidebar(prevState => !prevState);
-
-
     //auto
     const settings = {
         dots: true,
